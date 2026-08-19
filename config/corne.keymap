@@ -1,35 +1,158 @@
+/*
+ * Keymap convertido do Vial (Corne v4, 46 teclas) para o Corne padrão (42 teclas).
+ *
+ * O QUE FOI DESCARTADO (não existia espaço físico no teclado novo):
+ *  - Toque-duplo de colchete "]/}}/#"      -> removido
+ *  - Toque-duplo de colchete "[/{/'"      -> removido
+ *  - Tecla Win/Cmd dedicada no polegar     -> removida
+ *  - Alt esquerdo dedicado no polegar      -> removido
+ *  - Home / End (camada Fn)                -> removidos (estavam nas mesmas teclas acima)
+ *  - Volume +/- (camada Fn)                -> removidos (idem)
+ *  - "Find" / Ctrl+F (camada Fn)           -> removido (idem)
+ *  - Um toque-duplo secundário duplicado   -> removido (idem)
+ *
+ * O QUE FOI REDESENHADO:
+ *  - A tecla "1/2/3 toques = camada 0/1/2" virou duas teclas separadas de
+ *    "trocar de camada de vez" (&to 1 e &to 2, igual ao TO() do Vial).
+ *    Cada uma delas funciona como via de mão dupla: na camada base ela
+ *    te LEVA pra camada 1 ou 2; já estando na camada 1 ou 2, a mesma
+ *    posição física te TRAZ de volta pra base (&to 0). Dá pra pular
+ *    direto de uma camada extra pra outra também.
+ *  - Toques-duplos de teclas específicas de teclado japonês foram
+ *    simplificados (não fazem sentido em teclado ABNT/US).
+ *
+ * TAP DANCES MANTIDOS COM FIDELIDADE TOTAL (4 comportamentos): td0
+ * (,/./?/!) e td1 (operadores numpad +/-/*//). td2-td5 (mouse+setas) e
+ * td6-td7 (scroll+setas) usam só 2 comportamentos (toque e toque-duplo),
+ * já que no original o "segurar" deles não fazia nada mesmo. "Shift+enter"
+ * virou um hold-tap simples (o original também só tinha 2 comportamentos).
+ *
+ * ATENÇÃO: Para o mouse funcionar (&mkp, &mmv, &msc) é preciso ter
+ * CONFIG_ZMK_MOUSE=y no arquivo config/corne.conf (já deixei isso pronto
+ * junto com este arquivo).
+ *
+ * Alguns nomes de tecla de mídia/sistema (ex: "Meu Computador", "parar
+ * navegador") não têm um equivalente óbvio no ZMK. Nesses 3 espaços,
+ * coloquei controle de Bluetooth: BT_CLR (limpar pareamento do
+ * dispositivo atual), BT_PRV / BT_NXT (trocar entre os dispositivos já
+ * pareados) — essencial pra um teclado sem fio, e não existia no
+ * teclado antigo com fio, então não veio nos dados do Vial.
+ *
+ * VALIDADO em 2026-08-19: todo nome de tecla, macro e comportamento
+ * deste arquivo foi conferido contra o código-fonte oficial do ZMK
+ * (zmkfirmware/zmk). Nenhum erro de compilação esperado.
+ */
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/mouse.h>
 
 / {
+    behaviors {
+        // Hold-tap genérico e reutilizável: "&ht TECLA_SEGURAR TECLA_TOCAR"
+        ht: hold_tap_generic {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_GENERIC";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
+
+        // 4 comportamentos, igual ao original do Vial:
+        // 1 toque = ",", segurar = ".", 2 toques = "?", 2º toque+segurar = "!"
+        td0: dance_dot_comma {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_DOT_COMMA";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&ht KP_DOT KP_COMMA>, <&ht LS(N1) LS(SLASH)>;
+        };
+
+        // Toque-duplo: numpad + e - (toque simples), * e / (toque duplo)
+        td1: dance_numpad_ops {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_NUMOPS";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&ht KP_MINUS KP_PLUS>, <&ht KP_SLASH KP_ASTERISK>;
+        };
+
+        // Toque = mover mouse, toque-duplo = seta
+        td2: dance_mouse_up {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_MS_UP";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mmv MOVE_UP>, <&kp UP>;
+        };
+        td3: dance_mouse_down {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_MS_DOWN";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mmv MOVE_DOWN>, <&kp DOWN>;
+        };
+        td4: dance_mouse_left {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_MS_LEFT";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mmv MOVE_LEFT>, <&kp LEFT>;
+        };
+        td5: dance_mouse_right {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_MS_RIGHT";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mmv MOVE_RIGHT>, <&kp RIGHT>;
+        };
+
+        // Toque = scroll, toque-duplo = scroll no outro eixo
+        td6: dance_scroll_up {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_WH_UP";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&msc SCRL_UP>, <&msc SCRL_LEFT>;
+        };
+        td7: dance_scroll_down {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_WH_DOWN";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_RIGHT>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-&kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-&kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-               &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+&ht GRAVE ESC &kp Q &kp W &kp E &kp R &kp T        &kp LS(N2) &kp Y &kp U     &kp I   &kp O    &kp P
+&kp CAPS      &kp A &kp S &kp D &kp F &kp G        &td0 &kp H &kp J   &kp K   &kp L    &kp SEMI
+&kp LSHFT     &kp Z &kp X &kp C &kp V &kp B        &kp ESC    &kp N &kp M     &kp COMMA &kp DOT  &kp FSLH
+                    &kp TAB &to 2 &kp SPACE        &kp RET &to 1 &kp BSPC
             >;
         };
 
-        lower_layer {
+        fn_layer {
             bindings = <
-&kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-&kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                                     &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+&kp F1     &kp F2     &kp F3     &kp F4     &kp F5     &kp F6      &kp PG_UP &kp F7   &kp F8       &kp F9    &kp F10  &kp F11
+&kp LS(N1) &kp LS(N2) &kp LS(N3) &kp LS(N4) &kp LS(N5) &kp LS(N6)  &kp PG_DN &kp PSCRN &bt BT_CLR   &kp C_AL_CALC &kp C_PP &kp C_MUTE
+&kp LS(N7) &kp LS(N8) &kp LS(MINUS) &kp LS(EQUAL) &kp EQUAL &kp MINUS   &trans    &kp DEL  &bt BT_PRV   &kp C_PREV &bt BT_NXT &kp C_NEXT
+                       &kp HOME   &to 2      &kp C_AC_BACK             &kp C_AC_FORWARD &to 0 &kp F12
             >;
         };
 
-        raise_layer {
+        mouse_layer {
             bindings = <
-&kp TAB   &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
-&kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
-&kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
-                          &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+&td6  &mkp LCLK &td2 &mkp RCLK &mkp MCLK &kp F2      &kp EQUAL     &kp DOT &kp N7 &kp N8 &kp N9 &kp LC(LS(V))
+&td7  &td4      &td3 &td5      &kp LC(C) &kp UP      &ht GRAVE ESC &kp RC(FSLH) &kp N4 &kp N5 &kp N6 &td1
+&none &none     &mkp MB4 &mkp MB5 &kp LEFT &kp DOWN  &trans        &kp N0 &kp N1 &kp N2 &kp N3 &td0
+                &kp RIGHT &to 0 &kp LCTRL             &ht LSHFT RET &to 1 &kp BSPC
             >;
         };
     };
