@@ -99,7 +99,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "LAY1";
             #binding-cells = <0>;
-            bindings = <&to 3>, <&to 0>;
+            bindings = <&to 0>, <&to 1>, <&to 4>;
 
             tapping-term-ms = <250>;
         };
@@ -108,7 +108,123 @@
             compatible = "zmk,behavior-tap-dance";
             label = "LAY2";
             #binding-cells = <0>;
-            bindings = <&to 1>, <&to 3>;
+            bindings = <&to 2>, <&to 3>;
+
+            tapping-term-ms = <250>;
+        };
+
+        teclaaa: teclaaa {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TECLAAA";
+            #binding-cells = <0>;
+            bindings =
+                <&kp A>,
+                <&tecla_aagudo>,
+                <&tecla_aatil>,
+                <&tecla_acrase>;
+
+            tapping-term-ms = <250>;
+        };
+
+        teclae: teclae {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TECLAE";
+            #binding-cells = <0>;
+            bindings = <&kp E>, <&tecla_eagudo>, <&tecla_ecircunflexo>;
+
+            tapping-term-ms = <250>;
+        };
+
+        teclao: teclao {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TECLAO";
+            #binding-cells = <0>;
+            bindings =
+                <&kp O>,
+                <&tecla_aagudo>,
+                <&tecla_otil>,
+                <&tecla_ocircunflexo>;
+
+            tapping-term-ms = <250>;
+        };
+
+        teclai: teclai {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TECLAI";
+            #binding-cells = <0>;
+            bindings = <&kp I>, <&tecla_iagudo>;
+
+            tapping-term-ms = <250>;
+        };
+
+        teclau: teclau {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TECLAU";
+            #binding-cells = <0>;
+            bindings = <&kp U>, <&tecla_uagudo>;
+
+            tapping-term-ms = <250>;
+        };
+
+        teclac: teclac {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TECLAC";
+            #binding-cells = <0>;
+            bindings = <&kp C>, <&teclaa_cedilha>;
+
+            tapping-term-ms = <250>;
+        };
+
+        teclan: teclan {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TECLAN";
+            #binding-cells = <0>;
+            bindings = <&kp N>, <&tecla_ntil>;
+
+            tapping-term-ms = <250>;
+        };
+
+        blue1: blue1 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "BLUE1";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 0>, <&bt BT_SEL 1>;
+
+            tapping-term-ms = <250>;
+        };
+
+        blue2: blue2 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "BLUE2";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 2>, <&bt BT_SEL 3>;
+
+            tapping-term-ms = <250>;
+        };
+
+        teclaarroba: teclaarroba {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TECLAARROBA";
+            #binding-cells = <0>;
+            bindings = <&kp AT_SIGN>, <&kp UNDERSCORE>;
+
+            tapping-term-ms = <250>;
+        };
+
+        teclabarra: teclabarra {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TECLABARRA";
+            #binding-cells = <0>;
+            bindings = <&kp FSLH>, <&kp BSLH>, <&kp PIPE>;
+
+            tapping-term-ms = <250>;
+        };
+
+        pontovirgula: pontovirgula {
+            compatible = "zmk,behavior-tap-dance";
+            label = "PONTOVIRGULA";
+            #binding-cells = <0>;
+            bindings = <&kp SEMI>, <&kp SQT>;
 
             tapping-term-ms = <250>;
         };
@@ -129,11 +245,11 @@
             label = "TECLA_EAGUDO";
         };
 
-        tecla_ntil: tecla_etil {
+        tecla_ntil: tecla_ntil {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp TILDE &kp N>;
-            label = "TECLA_ETIL";
+            label = "TECLA_nTIL";
         };
 
         tecla_aagudo: tecla_aagudo {
@@ -192,11 +308,11 @@
             label = "TECLA_OCIRCUNFLEXO";
         };
 
-        tecla_otil: tecla_atil {
+        tecla_otil: tecla_otil {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp TILDE &kp O>;
-            label = "TECLA_ATIL";
+            label = "TECLA_OTIL";
         };
 
         teclaa_cedilha: teclaa_cedilha {
@@ -216,10 +332,10 @@
 
         default_layer {
             bindings = <
-&kp ESC    &kp Q  &kp W  &kp E         &kp R  &kp T        &kp Y    &kp U  &kp I         &kp O          &kp P     &kp BSPC
-&kp TAB    &kp A  &kp S  &kp D         &kp F  &kp G        &kp H    &kp J  &kp K         &kp L          &kp SEMI  &kp DEL
-&kp LSHFT  &kp Z  &kp X  &kp C         &kp V  &kp B        &kp N    &kp M  &virgula      &interrogacao  &kp FSLH  &kp AT_SIGN
-                         &kp LEFT_ALT  &lay1  &kp SPACE    &kp RET  &lay2  &kp LEFT_GUI
+&kp ESC    &kp Q     &kp W  &teclae       &kp R  &kp T        &kp Y    &teclau  &teclai       &teclao        &kp P          &kp BSPC
+&kp TAB    &teclaaa  &kp S  &kp D         &kp F  &kp G        &kp H    &kp J    &kp K         &kp L          &pontovirgula  &parenteses
+&kp LSHFT  &kp Z     &kp X  &teclac       &kp V  &kp B        &teclan  &kp M    &virgula      &interrogacao  &teclabarra    &teclaarroba
+                            &kp LEFT_ALT  &lay1  &kp SPACE    &kp RET  &lay2    &kp LEFT_GUI
             >;
         };
 
@@ -229,10 +345,10 @@
 
         symbolpad {
             bindings = <
-&kp F1      &kp F2        &kp F3        &kp F4        &kp F5        &kp F6          &kp F7    &kp F8    &kp F9    &kp F10    &kp F11  &kp F12
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &none    &none
-&kp LSHFT   &none         &none         &none         &none         &none           &none     &none     &none     &none      &none    &none
-                                        &kp LGUI      &lay1         &kp SPACE       &kp RET   &lay2     &kp RALT
+&kp F1           &kp F2        &kp F3             &kp F4      &kp F5       &kp F6       &kp F7   &kp F8      &kp F9    &kp F10        &kp F11  &kp F12
+&kp EXCLAMATION  &kp AT_SIGN   &kp HASH           &kp DOLLAR  &kp PERCENT  &kp CARET    &amenor  &acolchete  &kp HOME  &kp PAGE_UP    &none    &none
+&kp AMPERSAND    &kp ASTERISK  &kp RA(SEMICOLON)  &none       &none        &none        &achave  &none       &kp END   &kp PAGE_DOWN  &none    &none
+                                                  &kp LGUI    &lay1        &kp SPACE    &kp RET  &lay2       &kp RALT
             >;
         };
 
@@ -259,6 +375,15 @@
 &msc SCRL_DOWN  &mmv MOVE_LEFT   &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MB5  &none       &none  &kp LEFT  &kp DOWN      &kp RIGHT  &none           &kp LEFT_SHIFT
 &msc SCRL_LEFT  &msc SCRL_RIGHT  &none           &msc SCRL_RIGHT  &none     &none       &none  &none     &none         &none      &none           &kp LCTRL
                                                  &none            &lay1     &none       &none  &lay2     &kp LEFT_ALT
+            >;
+        };
+
+        config {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans      &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans      &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &bt BT_CLR  &blue1  &blue2
+                        &trans  &lay1   &trans    &trans  &lay2   &trans
             >;
         };
     };
