@@ -114,6 +114,99 @@
         };
     };
 
+    macros {
+        tecla_eagudo: eagudo {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SQT &kp E>;
+            label = "EAGUDO";
+        };
+
+        tecla_ecircunflexo: tecla_eagudo {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp CARET &kp E>;
+            label = "TECLA_EAGUDO";
+        };
+
+        tecla_ntil: tecla_etil {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp TILDE &kp N>;
+            label = "TECLA_ETIL";
+        };
+
+        tecla_aagudo: tecla_aagudo {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SQT &kp A>;
+            label = "TECLA_AAGUDO";
+        };
+
+        tecla_acircunflexo: tecla_acircunflexo {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp CARET &kp A>;
+            label = "TECLA_ACIRCUNFLEXO";
+        };
+
+        tecla_aatil: tecla_atil {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp TILDE &kp A>;
+            label = "TECLA_ATIL";
+        };
+
+        tecla_acrase: tecla_acrase {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE &kp A>;
+            label = "TECLA_ACRASE";
+        };
+
+        tecla_iagudo: tecla_iagudo {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SQT &kp I>;
+            label = "TECLA_IAGUDO";
+        };
+
+        tecla_oagudo: tecla_oagudo {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SQT &kp O>;
+            label = "TECLA_OAGUDO";
+        };
+
+        tecla_uagudo: tecla_uagudo {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SQT &kp U>;
+            label = "TECLA_UAGUDO";
+        };
+
+        tecla_ocircunflexo: tecla_ocircunflexo {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp CARET &kp O>;
+            label = "TECLA_OCIRCUNFLEXO";
+        };
+
+        tecla_otil: tecla_atil {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp TILDE &kp O>;
+            label = "TECLA_ATIL";
+        };
+
+        teclaa_cedilha: teclaa_cedilha {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SQT &kp C>;
+            label = "TECLAA_CEDILHA";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -125,7 +218,7 @@
             bindings = <
 &kp ESC    &kp Q  &kp W  &kp E         &kp R  &kp T        &kp Y    &kp U  &kp I         &kp O          &kp P     &kp BSPC
 &kp TAB    &kp A  &kp S  &kp D         &kp F  &kp G        &kp H    &kp J  &kp K         &kp L          &kp SEMI  &kp DEL
-&kp LSHFT  &kp Z  &kp X  &kp C         &kp V  &kp B        &kp N    &kp M  &virgula      &interrogacao  &kp FSLH  &kp ESC
+&kp LSHFT  &kp Z  &kp X  &kp C         &kp V  &kp B        &kp N    &kp M  &virgula      &interrogacao  &kp FSLH  &kp AT_SIGN
                          &kp LEFT_ALT  &lay1  &kp SPACE    &kp RET  &lay2  &kp LEFT_GUI
             >;
         };
