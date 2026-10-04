@@ -11,6 +11,7 @@
             label = "VIRGULA";
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp DOT>;
+
             tapping-term-ms = <250>;
         };
 
@@ -19,6 +20,7 @@
             label = "INTERROGACAO";
             #binding-cells = <0>;
             bindings = <&kp QUESTION>, <&kp EXCLAMATION>;
+
             tapping-term-ms = <250>;
         };
 
@@ -27,6 +29,7 @@
             label = "SOMA";
             #binding-cells = <0>;
             bindings = <&kp PLUS>, <&kp MINUS>;
+
             tapping-term-ms = <250>;
         };
 
@@ -35,6 +38,7 @@
             label = "MULTIPLICACAO";
             #binding-cells = <0>;
             bindings = <&kp ASTERISK>, <&kp SLASH>;
+
             tapping-term-ms = <250>;
         };
 
@@ -43,6 +47,7 @@
             label = "AGUDO";
             #binding-cells = <0>;
             bindings = <&kp SQT>, <&kp GRAVE>;
+
             tapping-term-ms = <250>;
         };
 
@@ -51,6 +56,7 @@
             label = "ACENTOTIL";
             #binding-cells = <0>;
             bindings = <&kp TILDE>, <&kp CARET>;
+
             tapping-term-ms = <250>;
         };
 
@@ -59,6 +65,7 @@
             label = "PARENTESES";
             #binding-cells = <0>;
             bindings = <&kp LPAR>, <&kp RPAR>;
+
             tapping-term-ms = <250>;
         };
 
@@ -67,6 +74,7 @@
             label = "ACHAVE";
             #binding-cells = <0>;
             bindings = <&kp LBRC>, <&kp RBRC>;
+
             tapping-term-ms = <250>;
         };
 
@@ -75,6 +83,7 @@
             label = "ACOLCHETE";
             #binding-cells = <0>;
             bindings = <&kp LBKT>, <&kp RBKT>;
+
             tapping-term-ms = <250>;
         };
 
@@ -83,6 +92,7 @@
             label = "AMENOR";
             #binding-cells = <0>;
             bindings = <&kp LT>, <&kp GT>;
+
             tapping-term-ms = <250>;
         };
 
@@ -91,6 +101,7 @@
             label = "LAY1";
             #binding-cells = <0>;
             bindings = <&to 0>, <&to 1>, <&none>, <&none>, <&to 4>;
+
             tapping-term-ms = <250>;
         };
 
@@ -99,6 +110,7 @@
             label = "LAY2";
             #binding-cells = <0>;
             bindings = <&to 2>, <&to 3>, <&none>, <&none>, <&to 4>;
+
             tapping-term-ms = <250>;
         };
 
@@ -111,6 +123,7 @@
                 <&tecla_aagudo>,
                 <&tecla_aatil>,
                 <&tecla_acrase>;
+
             tapping-term-ms = <250>;
         };
 
@@ -119,6 +132,7 @@
             label = "TECLAE";
             #binding-cells = <0>;
             bindings = <&kp E>, <&tecla_eagudo>, <&tecla_ecircunflexo>;
+
             tapping-term-ms = <250>;
         };
 
@@ -131,6 +145,7 @@
                 <&tecla_oagudo>,
                 <&tecla_otil>,
                 <&tecla_ocircunflexo>;
+
             tapping-term-ms = <250>;
         };
 
@@ -139,6 +154,7 @@
             label = "TECLAI";
             #binding-cells = <0>;
             bindings = <&kp I>, <&tecla_iagudo>;
+
             tapping-term-ms = <250>;
         };
 
@@ -147,6 +163,7 @@
             label = "TECLAU";
             #binding-cells = <0>;
             bindings = <&kp U>, <&tecla_uagudo>;
+
             tapping-term-ms = <250>;
         };
 
@@ -155,6 +172,7 @@
             label = "TECLAC";
             #binding-cells = <0>;
             bindings = <&kp C>, <&teclaa_cedilha>;
+
             tapping-term-ms = <250>;
         };
 
@@ -163,6 +181,7 @@
             label = "TECLAN";
             #binding-cells = <0>;
             bindings = <&kp N>, <&tecla_ntil>;
+
             tapping-term-ms = <250>;
         };
 
@@ -171,6 +190,7 @@
             label = "BLUE1";
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 0>, <&bt BT_SEL 1>;
+
             tapping-term-ms = <250>;
         };
 
@@ -179,6 +199,7 @@
             label = "BLUE2";
             #binding-cells = <0>;
             bindings = <&bt BT_SEL 2>, <&bt BT_SEL 3>;
+
             tapping-term-ms = <250>;
         };
 
@@ -187,6 +208,7 @@
             label = "TECLAARROBA";
             #binding-cells = <0>;
             bindings = <&kp AT_SIGN>, <&kp UNDERSCORE>;
+
             tapping-term-ms = <250>;
         };
 
@@ -195,6 +217,7 @@
             label = "TECLABARRA";
             #binding-cells = <0>;
             bindings = <&kp FSLH>, <&kp BSLH>, <&kp PIPE>;
+
             tapping-term-ms = <250>;
         };
 
@@ -203,6 +226,7 @@
             label = "PONTOVIRGULA";
             #binding-cells = <0>;
             bindings = <&kp SEMI>, <&kp SQT>;
+
             tapping-term-ms = <250>;
         };
     };
@@ -309,10 +333,10 @@
 
         default_layer {
             bindings = <
-&kp ESC    &kp Q      &kp W  &teclae        &kp R  &kp T        &kp Y    &teclau  &teclai        &teclao        &kp P          &kp BSPC
-&kp TAB    &teclaaa   &kp S  &kp D          &kp F  &kp G        &kp H    &kp J    &kp K          &kp L          &pontovirgula  &parenteses
-&kp LSHFT  &kp Z      &kp X  &teclac        &kp V  &kp B        &teclan  &kp M    &virgula       &interrogacao  &teclabarra    &teclaarroba
-                             &kp LEFT_ALT   &lay1  &kp SPACE    &kp RET  &lay2    &kp LEFT_GUI
+&kp ESC    &kp Q     &kp W  &teclae       &kp R  &kp T        &kp Y    &teclau  &teclai    &teclao        &kp P          &kp BSPC
+&kp TAB    &teclaaa  &kp S  &kp D         &kp F  &kp G        &kp H    &kp J    &kp K      &kp L          &pontovirgula  &parenteses
+&kp LSHFT  &kp Z     &kp X  &teclac       &kp V  &kp B        &teclan  &kp M    &virgula   &interrogacao  &teclabarra    &teclaarroba
+                            &kp LEFT_ALT  &lay1  &kp SPACE    &kp RET  &lay2    &kp LCTRL
             >;
         };
 
@@ -322,10 +346,10 @@
 
         symbolpad {
             bindings = <
-&kp F1           &kp F2        &kp F3             &kp F4       &kp F5        &kp F6       &kp F7   &kp F8       &kp F9    &kp F10        &kp F11  &kp F12
-&kp EXCLAMATION  &kp AT_SIGN   &kp HASH           &kp DOLLAR   &kp PERCENT   &kp CARET    &amenor  &acolchete   &kp HOME  &kp PAGE_UP    &none    &blue1
-&kp AMPERSAND    &kp ASTERISK  &kp RA(SEMICOLON)  &none        &none         &none        &achave  &none        &kp END   &kp PAGE_DOWN  &none    &blue2
-                                                  &kp LGUI     &lay1         &kp SPACE    &kp RET  &lay2        &kp RALT
+&kp F1           &kp F2        &kp F3             &kp F4      &kp F5       &kp F6       &kp F7   &kp F8      &kp F9    &kp F10        &kp F11  &kp F12
+&kp EXCLAMATION  &kp AT_SIGN   &kp HASH           &kp DOLLAR  &kp PERCENT  &kp CARET    &amenor  &acolchete  &kp HOME  &kp PAGE_UP    &none    &blue1
+&kp AMPERSAND    &kp ASTERISK  &kp RA(SEMICOLON)  &none       &none        &none        &achave  &none       &kp END   &kp PAGE_DOWN  &none    &blue2
+                                                  &kp LGUI    &lay1        &kp SPACE    &kp RET  &lay2       &kp RALT
             >;
         };
 
