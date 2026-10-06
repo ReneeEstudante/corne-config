@@ -10,7 +10,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "VIRGULA";
             #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp DOT>;
+            bindings = <&kp COMMA>, <&kp DOT>, <&kp SEMI>, <&kp DOUBLE_QUOTES>;
 
             tapping-term-ms = <250>;
         };
@@ -28,7 +28,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "SOMA";
             #binding-cells = <0>;
-            bindings = <&kp PLUS>, <&kp MINUS>;
+            bindings = <&kp PLUS>, <&kp MINUS>, <&kp SLASH>, <&kp ASTERISK>;
 
             tapping-term-ms = <250>;
         };
@@ -46,7 +46,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "AGUDO";
             #binding-cells = <0>;
-            bindings = <&kp SQT>, <&kp GRAVE>;
+            bindings = <&kp SQT>, <&kp GRAVE>, <&kp CARET>, <&kp TILDE>;
 
             tapping-term-ms = <250>;
         };
@@ -64,7 +64,11 @@
             compatible = "zmk,behavior-tap-dance";
             label = "PARENTESES";
             #binding-cells = <0>;
-            bindings = <&kp LPAR>, <&kp RPAR>;
+            bindings =
+                <&kp LPAR>,
+                <&kp RPAR>,
+                <&kp LEFT_BRACKET>,
+                <&kp RIGHT_BRACKET>;
 
             tapping-term-ms = <250>;
         };
@@ -91,7 +95,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "AMENOR";
             #binding-cells = <0>;
-            bindings = <&kp LT>, <&kp GT>;
+            bindings = <&kp LT>, <&kp GT>, <&kp LBRC>, <&kp RBRC>;
 
             tapping-term-ms = <250>;
         };
@@ -189,7 +193,11 @@
             compatible = "zmk,behavior-tap-dance";
             label = "BLUE1";
             #binding-cells = <0>;
-            bindings = <&bt BT_SEL 0>, <&bt BT_SEL 1>;
+            bindings =
+                <&bt BT_SEL 0>,
+                <&bt BT_SEL 1>,
+                <&bt BT_SEL 2>,
+                <&bt BT_SEL 4>;
 
             tapping-term-ms = <250>;
         };
@@ -207,7 +215,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TECLAARROBA";
             #binding-cells = <0>;
-            bindings = <&kp AT_SIGN>, <&kp UNDERSCORE>;
+            bindings = <&kp AT_SIGN>, <&kp UNDERSCORE>, <&kp BSLH>, <&kp PIPE>;
 
             tapping-term-ms = <250>;
         };
@@ -228,6 +236,24 @@
             bindings = <&kp SEMI>, <&kp SQT>;
 
             tapping-term-ms = <250>;
+        };
+
+        tabesc: tabesc {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TABESC";
+            #binding-cells = <0>;
+            bindings = <&kp TAB>, <&kp ESC>;
+
+            tapping-term-ms = <220>;
+        };
+
+        bkdel: bkdel {
+            compatible = "zmk,behavior-tap-dance";
+            label = "BKDEL";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSPACE>, <&kp DEL>;
+
+            tapping-term-ms = <210>;
         };
     };
 
@@ -333,10 +359,10 @@
 
         default_layer {
             bindings = <
-&kp ESC    &kp Q     &kp W  &teclae       &kp R  &kp T        &kp Y    &teclau  &teclai    &teclao        &kp P          &kp BSPC
-&kp TAB    &teclaaa  &kp S  &kp D         &kp F  &kp G        &kp H    &kp J    &kp K      &kp L          &pontovirgula  &parenteses
-&kp LSHFT  &kp Z     &kp X  &teclac       &kp V  &kp B        &teclan  &kp M    &virgula   &interrogacao  &teclabarra    &teclaarroba
-                            &kp LEFT_ALT  &lay1  &kp SPACE    &kp RET  &lay2    &kp LCTRL
+&kp ESC    &kp Q     &kp W  &teclae    &kp R  &kp T        &kp Y    &teclau  &teclai    &teclao        &kp P          &kp BSPC
+&kp TAB    &teclaaa  &kp S  &kp D      &kp F  &kp G        &kp H    &kp J    &kp K      &kp L          &pontovirgula  &parenteses
+&kp LSHFT  &kp Z     &kp X  &teclac    &kp V  &kp B        &teclan  &kp M    &virgula   &interrogacao  &teclabarra    &teclaarroba
+                            &kp LCTRL  &lay1  &kp SPACE    &kp RET  &lay2    &kp LCTRL
             >;
         };
 
@@ -348,7 +374,7 @@
             bindings = <
 &kp F1           &kp F2        &kp F3             &kp F4      &kp F5       &kp F6       &kp F7   &kp F8      &kp F9    &kp F10        &kp F11  &kp F12
 &kp EXCLAMATION  &kp AT_SIGN   &kp HASH           &kp DOLLAR  &kp PERCENT  &kp CARET    &amenor  &acolchete  &kp HOME  &kp PAGE_UP    &none    &blue1
-&kp AMPERSAND    &kp ASTERISK  &kp RA(SEMICOLON)  &none       &none        &none        &achave  &none       &kp END   &kp PAGE_DOWN  &none    &blue2
+&kp AMPERSAND    &kp ASTERISK  &kp RA(SEMICOLON)  &none       &none        &none        &achave  &kp DEL     &kp END   &kp PAGE_DOWN  &none    &blue2
                                                   &kp LGUI    &lay1        &kp SPACE    &kp RET  &lay2       &kp RALT
             >;
         };
